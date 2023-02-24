@@ -28,5 +28,3 @@ export const App = () => {
     </>
   );
 };
-
-// djkfhkjhfkjrehfkjerklfjrelkfjlw.e

@@ -20,4 +20,3 @@ const MovieList = ({ movies, location }) => {
 
 export default MovieList;
 
-// rgregfregregregrereftr
