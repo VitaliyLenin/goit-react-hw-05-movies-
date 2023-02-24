@@ -1,5 +1,6 @@
-import { useState, useEffect, useMemo } from 'react';
-import { useLocation, useSearchParams } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
+
 import { getTrendingMovies } from 'shared/Api';
 
 import css from './Home.module.css';
@@ -10,21 +11,13 @@ const Home = () => {
   const [movies, setMovies] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  const [searchParams, setSearchParams] = useSearchParams({ page: 1 });
-
-  const params = useMemo(
-    () => Object.fromEntries([...searchParams]),
-    [searchParams]
-  );
-  const page = Number(params.page || 1);
-
   const location = useLocation();
 
   useEffect(() => {
     const getData = async () => {
       try {
         setLoading(true);
-        const data = await getTrendingMovies(page);
+        const data = await getTrendingMovies();
         setMovies(data.results);
         setLoading(false);
       } catch (error) {
@@ -34,7 +27,7 @@ const Home = () => {
       }
     };
     getData();
-  }, [page]);
+  }, []);
 
   return (
     <>
